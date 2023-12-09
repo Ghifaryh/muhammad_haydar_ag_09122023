@@ -119,7 +119,6 @@
                 });
             }
 
-            // Customise jenis_kelamin value
             switch (data.jenis_kelamin) {
                 case 'l':
                     data.jenis_kelamin = 'Laki-Laki';
@@ -152,8 +151,6 @@
             Hobi: ${data.hobi ? data.hobi.join(', ') : 'Tidak ada hobi yang dipilih'}
 
             `;
-
-            // Show the alert
             alert(message);
         });
 
