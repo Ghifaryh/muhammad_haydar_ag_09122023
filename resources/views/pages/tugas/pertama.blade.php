@@ -31,8 +31,7 @@
             <div class="input-alamat mb-2">
                 <label for="alamat" class="block font-bold text-gray-700">Alamat</label>
                 <textarea name="alamat" id="alamat" cols="40" rows="5" placeholder="Alamat"
-                    class="w-full border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                </textarea>
+                    class="w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
             </div>
             <div class="input-telepon mb-2">
                 <label for="notelp" class="block font-bold text-gray-700">No. Telp/HP</label>
@@ -40,9 +39,9 @@
                     class="w-full border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
             <div class="input-gender mb-2">
-                <label for="notelp" class="block font-bold text-gray-700">Jenis Kelamin</label>
-                <input type="radio" name="jenis_kelamin" id="jenis_kelamin" value="l">Laki-Laki
-                <input type="radio" name="jenis_kelamin" id="jenis_kelamin"value="p">Perempuan
+                <label for="jenis_kelamin" class="block font-bold text-gray-700">Jenis Kelamin</label>
+                <input type="radio" name="jenis_kelamin" id="jenis_kelamin" value="1">Laki-Laki
+                <input type="radio" name="jenis_kelamin" id="jenis_kelamin" value="2">Perempuan
             </div>
             <div class="input-agama mb-2">
                 <label for="agama" class="block font-bold text-gray-700">Agama</label>
@@ -80,6 +79,8 @@
         const resetBtn = document.getElementById('reset');
         const form = document.querySelector('form');
 
+        const jenisKelamin = document.getElementById('jenis_kelamin');
+
         submitBtn.addEventListener('click', function(e) {
             e.preventDefault();
             let data = {};
@@ -98,10 +99,6 @@
                 }
             }
 
-            if (!data.jenis_kelamin) {
-                data.jenis_kelamin = 'l';
-            }
-
             if (data.hobi) {
                 data.hobi = data.hobi.map(value => {
                     switch (value) {
@@ -117,17 +114,7 @@
                             return 'Tidak ada hobi yang dipilih';
                     }
                 });
-            }
 
-            switch (data.jenis_kelamin) {
-                case 'l':
-                    data.jenis_kelamin = 'Laki-Laki';
-                    break;
-                case 'p':
-                    data.jenis_kelamin = 'Perempuan';
-                    break;
-                default:
-                    data.jenis_kelamin = 'Jenis kelamin tidak ditentukan';
             }
 
             switch (data.agama) {
@@ -147,12 +134,14 @@
             Alamat: ${data.alamat}
             No. Telp/HP: ${data.notelp}
             Jenis Kelamin: ${data.jenis_kelamin}
+
             Agama: ${data.agama}
             Hobi: ${data.hobi ? data.hobi.join(', ') : 'Tidak ada hobi yang dipilih'}
 
             `;
             alert(message);
         });
+        // Jenis Kelamin: ${data.jenis_kelamin ? "1" == "Laki-Laki" : "Perempuan"}
 
         resetBtn.addEventListener('click', function() {
             form.reset();
