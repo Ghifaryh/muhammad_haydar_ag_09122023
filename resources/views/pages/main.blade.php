@@ -1,6 +1,7 @@
-@include('layouts.app')
+@extends('layouts.app')
 
-
-<h1 class="text-3xl font-bold underline">
-    Hello world!
-</h1>
+@section('main')
+    <h1 class="text-3xl font-bold underline">
+        Hello world!
+    </h1>
+@endsection
